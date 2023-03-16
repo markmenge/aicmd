@@ -9,7 +9,7 @@ def get_prompt(task):
     with open('ai.json', 'r') as f:
         config = json.load(f)
 
-    return config['prompts'][task]['cmd']
+    return config['macros'][task]['cmd']
 
 
 def execute_command(command):
@@ -19,7 +19,7 @@ def execute_command(command):
 
 def main():
     parser = argparse.ArgumentParser(description='AI Command Line Tool', epilog='Example:python ai.py cmd "list all the .py files"')
-    parser.add_argument('task', type=str, help='The task to perform (cmd, bash, esp32, py)')
+    parser.add_argument('macro', type=str, help='The macro to perform (cmd, bash, esp32, python, none)')
     parser.add_argument('query', type=str, help='The natural language query')
     parser.add_argument('--no-exec', dest='no_exec', action='store_true',
                         help='Do not execute the command after generating it')
@@ -34,7 +34,7 @@ def main():
     openai.api_base = config['settings']['api_endpoint']
 
     # Build the prompt
-    prompt = get_prompt(args.task) + ' ' + args.query + '. Include no explanation.'
+    prompt = get_prompt(args.macro) + ' ' + args.query + '. Include no explanation.'
 
     # Generate the command using OpenAI's GPT-3 API
     response = openai.Completion.create(
@@ -45,10 +45,10 @@ def main():
         stop=None,
         temperature=0.25,
     )
-    print(f"Openin was asked to {prompt}")
+    print(f"Openai was asked to:\n{prompt}")
     output = response.choices[0].text.strip()
     # Execute the command if requested
-    if not args.no_exec and config['prompts'][args.task]['exec']:
+    if not args.no_exec and config['macros'][args.macro]['exec']:
         ans = input(f"Openai responds with: {output}\nPress y and <enter> to execute")
         if ans == 'y':
             execute_command(output)

@@ -1,7 +1,7 @@
 {
   "settings": {
-    "api_key": "enter you sk- api key here",
-    "api_endpoint": "https://api.openai.com/v1/",
+    "api_key": "your sk key here",
+    "api_endpoint": "https://api.openai.com/v1",
     "timeout": 30,
     "retry": {
       "enabled": true,
@@ -14,7 +14,7 @@
     },
     "debug": false
   },
-  "prompts": {
+  "macros": {
     "cmd": {
       "cmd": "Generate the Windows 10 command line command to",
       "exec": true
@@ -23,13 +23,17 @@
       "cmd": "Write Linux bash shell command to",
       "exec": true
     },
-    "ESP32": {
+    "esp32": {
       "cmd": "Write Arduino code for the ESP32 to",
       "exec": false
     },
-    "py": {
+    "python": {
       "cmd": "Write Python code to",
       "exec": false
-    }
+    },
+    "none": {
+      "cmd": "Write Python code to",
+      "exec": false
+	}
   }
 }
