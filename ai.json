@@ -16,23 +16,24 @@
   },
   "macros": {
     "cmd": {
-      "cmd": "Generate the Windows 10 command line command to",
+      "cmd": "I want no explanation with this request. Generate the Windows 10 command line command to",
       "exec": true
     },
     "bash": {
-      "cmd": "Write Linux bash shell command to",
+      "cmd": "I want no explanation with this request. Write Linux bash shell command to",
       "exec": true
     },
     "esp32": {
-      "cmd": "Write Arduino code for the ESP32 to",
+      "cmd": "I want no explanation with this request. Write Arduino code for the ESP32 to",
       "exec": false
     },
     "python": {
-      "cmd": "Write Python code to",
-      "exec": false
+      "cmd": "I want no explanation with this request. Write Python code to",
+      "exec": true,
+      "file": "ChatGPT.py"
     },
     "none": {
-      "cmd": "Write Python code to",
+      "cmd": "",
       "exec": false
 	}
   }
