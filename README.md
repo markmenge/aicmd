@@ -11,6 +11,7 @@ Instructions
 2. Create an openai.com account. Be warned, you'll need a phone number. Don't worry it's backed by Microsoft.
 3. Generate an API key here: https://beta.openai.com/account/api-keys
 4. Open ai.json in notepad and edit "api_key": and replace "your sk key here" with your key.
+5. run pip install openai
 
 To run the script, use the following command:
 python ai.py [macro] "english description of what you want to do"
