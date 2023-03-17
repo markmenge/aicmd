@@ -11,7 +11,7 @@ Instructions
 1. Install python. Use method of choice, I'm running Windows 10 and I ran: winget install Python.Python.3.9
 2. Create an openai.com account. Be warned, you'll need a phone number. Don't worry it's backed by Microsoft.
 3. Generate an API key here: https://beta.openai.com/account/api-keys
-4. Open ai.json in notepad and edit "api_key": and replace "your sk key here" with your key.
+4. Open ai.json in notepad and edit "api_key": and set with your key.
 5. Run pip install openai
 
 To run the script, use the following command:
