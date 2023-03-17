@@ -34,9 +34,10 @@ def main():
     openai.api_base = config['settings']['api_endpoint']
 
     # Build the prompt
-    prompt = get_prompt(args.macro) + ' ' + args.query + '. Include no explanation.'
+    prompt = get_prompt(args.macro) + ' ' + args.query
 
     # Generate the command using OpenAI's GPT-3 API
+    
     response = openai.Completion.create(
         engine="text-davinci-002",
         prompt=prompt,
@@ -45,15 +46,28 @@ def main():
         stop=None,
         temperature=0.25,
     )
-    print(f"Openai was asked to:\n{prompt}")
     output = response.choices[0].text.strip()
+    
+    # output = 'dir /s'
+    print(f"Openai.com was asked to:\n{prompt}") 
+    print(f"Openai.com responds with:\n{output}\n")
+    
+    
     # Execute the command if requested
     if not args.no_exec and config['macros'][args.macro]['exec']:
-        ans = input(f"Openai responds with: {output}\nPress y and <enter> to execute")
+        ans = input("Execute this command (y/n)?")
         if ans == 'y':
-            execute_command(output)
-    else:
-        print(f"{output}");
+            file = None
+            try:
+                file = config['macros'][args.macro]['file']
+            except:
+                pass
+            if file is not None:
+                with open(file, 'w') as f:
+                    f.write(output)
+                execute_command(file)
+            else:
+                execute_command(output)
 
 if __name__ == '__main__':
     main()
