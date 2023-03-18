@@ -1,6 +1,6 @@
 {
   "settings": {
-    "api_key": "your sk key here",
+    "api_key": "Enter SK key",
     "api_endpoint": "https://api.openai.com/v1",
     "timeout": 30,
     "retry": {
@@ -16,19 +16,19 @@
   },
   "macros": {
     "cmd": {
-      "cmd": "I want no explanation with this request. Generate the Windows 10 command line command to",
+      "cmd": "Generate the Windows 10 command line command to ",
       "exec": true
     },
     "bash": {
-      "cmd": "I want no explanation with this request. Write Linux bash shell command to",
+      "cmd": "Write Linux bash shell command to ",
       "exec": true
     },
     "esp32": {
-      "cmd": "I want no explanation with this request. Write Arduino code for the ESP32 to",
+      "cmd": "Write Arduino code for the ESP32 to ",
       "exec": false
     },
     "python": {
-      "cmd": "I want no explanation with this request. Write Python code to",
+      "cmd": "Write Python code to ",
       "exec": true,
       "file": "ChatGPT.py"
     },
