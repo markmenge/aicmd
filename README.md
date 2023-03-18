@@ -2,13 +2,13 @@
 
 This Python script, `aicmd.py`, allows you to access ChatGPT from the command line!
 
-Before using, set the "api_key" setting in ai.json. Currently you generate a key here: https://beta.openai.com/account/api-keys
+Before using,  Generate an API key here: https://beta.openai.com/account/api-keys and run setup.py
 
 To run the script, use the following command:
 
 python aicmd.py [macro] "english description of what you want to do"
 
-Example macros (stored in ai.json):
+Example macros (stored in aicmd.json):
 - 'bash' for Linux and macOS systems command prompts
 - 'cmd' for Windows command prompt
 - 'esp32' for ESP32 Arduino board code generation

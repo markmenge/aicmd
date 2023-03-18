@@ -1,19 +1,4 @@
 {
-  "settings": {
-    "api_key": "Enter SK key",
-    "api_endpoint": "https://api.openai.com/v1",
-    "timeout": 30,
-    "retry": {
-      "enabled": true,
-      "attempts": 3,
-      "delay": 5,
-      "errors": [
-        "timeout",
-        "http_error"
-      ]
-    },
-    "debug": false
-  },
   "macros": {
     "cmd": {
       "cmd": "Generate the Windows 10 command line command to ",
