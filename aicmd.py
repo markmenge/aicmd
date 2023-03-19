@@ -71,7 +71,7 @@ def main():
             except:
                 pass
             if file is not None:
-				print(f"Writing file: {file}")
+				print(f"Writing file:{file}")
                 with open(file, 'w') as f:
                     f.write(output)
                 result = subprocess.run([exec, file], capture_output=True)
