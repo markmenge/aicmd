@@ -20,6 +20,10 @@ Examples:
 py aicmd.py none "who was picasso?"
 
 python aicmd.py cmd "List files sorted by size"
+
 python aicmd.py bash "How much memory does this computer have"
+
 python aicmd.py python "create a webserver that says hello world, with a button that when you push it says hello to you!"
+
 python aicmd.py esp32 "create a webserver that says hello and the voltages on the pins. Create the access point named arduino with no password."  
+
