@@ -90,7 +90,7 @@ def main():
     # Execute the command if requested
     exec = config['macros'][macro]['exec']
     if (exec):
-        ans = input("Execute this command (y/n)?")
+        ans = input("Execute (y/n)?")
         if ans == 'y':
             file = None
             try:
@@ -98,6 +98,7 @@ def main():
             except:
                 pass
             if file is not None:
+                print(f"writing file: {file}")
                 with open(file, 'w') as f:
                     f.write(output)
                 if (macro == "python" and config['macros']['python']['check_imports']):
