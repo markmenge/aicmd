@@ -1,57 +1,30 @@
-import os
 import subprocess
 import argparse
 import json
 import openai
-from check_imports import check_imports
+import os
 
 config = None
 args = None
 key = None  # API key starts with sk-
 
 # if testing, set the following 4 variables including bTesting=True
-bTesting = False
+bTesting = True
 macro = "python"
 prompt = "hello world"
-output = '''import numpy as np
-import matplotlib.pyplot as plt
-from mpl_toolkits.mplot3d import Axes3D
-
-# Generate x, y values for the surface
-x = np.linspace(-np.pi, np.pi, 50)
-y = np.linspace(-np.pi, np.pi, 50)
-X, Y = np.meshgrid(x, y)
-
-# Calculate Z values
-Z = np.sin(X) + np.cos(Y)
-
-# Initialize the figure and axis
-fig = plt.figure()
-ax = fig.add_subplot(111, projection='3d')
-
-# Plot the surface
-ax.plot_surface(X, Y, Z)
-
-# Add labels and title
-ax.set_xlabel("x")
-ax.set_ylabel("y")
-ax.set_zlabel("z")
-plt.title("z = sin(x) + cos(y)")
-
-# Show the plot
-plt.show()'''
+output = "print('hello world')"
 
 # main program
 def main():
     global prompt
     global output
     global macro
-    global args
     # argument parsing
     parser = argparse.ArgumentParser(description='AI Command Line Tool', epilog='Example:python aicmd.py cmd "list all the .py files"')
-    parser.add_argument('macro', type=str, help='The macro to perform (cmd, bash, esp32, python, none etc)')
+    parser.add_argument('macro', type=str, help='The macro to perform (cmd, bash, esp32, python, none)')
     parser.add_argument('query', type=str, help='The natural language query')
-
+    parser.add_argument('--no-exec', dest='no_exec', action='store_true',
+                        help='Do not execute the command after generating it')
     if (bTesting is False):
         args = parser.parse_args()
         macro = args.macro
@@ -69,10 +42,10 @@ def main():
         config = json.load(f)
     
     if (bTesting is False):
-        openai.api_base = config['settings']['api_endpoint']
-        prompt = config['macros'][macro]['cmd'] + args.query
+        openai.api_base = config['api_endpoint']
+        prompt = config['macros'][args.macro]['cmd'] + args.query
         prompt = prompt.strip()
-        if config['macros'][macro]['exec']:
+        if config['macros'][args.macro]['exec']:
             prompt = prompt + ". Shorter is better and offer no explanation."
     
         response = openai.Completion.create(
@@ -89,8 +62,8 @@ def main():
     print(f"Openai.com responded:\n{output}\n") 
     # Execute the command if requested
     exec = config['macros'][macro]['exec']
-    if (exec):
-        ans = input("Execute (y/n)?")
+    if (bTesting or not args.no_exec) and exec:
+        ans = input("Execute this command (y/n)?")
         if ans == 'y':
             file = None
             try:
@@ -98,15 +71,14 @@ def main():
             except:
                 pass
             if file is not None:
-                print(f"writing file: {file}")
+				print(f"Writing file: {file}")
                 with open(file, 'w') as f:
                     f.write(output)
-                if (macro == "python" and config['macros']['python']['check_imports']):
-                    check_imports(file)
                 result = subprocess.run([exec, file], capture_output=True)
                 print(result.stdout.decode())
             else:
-                 os.system(output)
+                result = subprocess.run([exec, output], capture_output=True)
+                print(result.stdout.decode())
 
 # walk user through setting up OPENAI_APY_KEY
 def set_openai_api_key():
@@ -140,7 +112,6 @@ def set_openai_api_key():
 if __name__ == '__main__':
     key = os.getenv("OPENAI_API_KEY")
     if key is None or len(key) < 50:
-        print(f"Environment variable OPENAI_API_KEY not set!\n")
         set_openai_api_key()
         print(f"OPENAI_API_KEY set to {key}")
     main()
