@@ -1,12 +1,15 @@
 {
+  "settings": {
+    "api_endpoint": "https://api.openai.com/v1"
+  },
   "macros": {
     "cmd": {
       "cmd": "Generate the Windows 10 command line command to ",
-      "exec": true
+      "exec": "cmd.exe"
     },
     "bash": {
       "cmd": "Write Linux bash shell command to ",
-      "exec": true
+      "exec": "bash"
     },
     "esp32": {
       "cmd": "Write Arduino code for the ESP32 to ",
@@ -14,11 +17,11 @@
     },
     "python": {
       "cmd": "Write Python code to ",
-      "exec": true,
-      "file": "ChatGPT.py"
+      "exec": "python.exe",
+      "file": "ChatGPT.py",
+      "check_imports": true
     },
     "none": {
-      "cmd": "",
       "exec": false
 	}
   }
