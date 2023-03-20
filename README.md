@@ -12,7 +12,7 @@ This Python script, `aicmd.py`, allows you to access ChatGPT from the command li
 # Usage
 python aicmd.py [macro] "english description of what you want to do"
 
-# Examples:
+# Examples
 - python aicmd.py none "who was picasso?"
 - python aicmd.py cmd "List files sorted by size"
 - python aicmd.py bash "How much memory does this computer have"
