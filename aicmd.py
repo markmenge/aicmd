@@ -10,7 +10,7 @@ args = None
 key = None  # API key starts with sk-
 
 # if testing, set the following 4 variables including bTesting=True
-bTesting = True
+bTesting = False
 macro = "python"
 prompt = "hello world"
 output = '''import numpy as np
