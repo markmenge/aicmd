@@ -10,7 +10,7 @@ args = None
 key = None  # API key starts with sk-
 
 # if testing, set the following 4 variables including bTesting=True
-bTesting = False
+bTesting = True
 macro = "python"
 prompt = "hello world"
 output = '''import numpy as np
@@ -114,7 +114,7 @@ def set_openai_api_key():
     set_env_var = input("To run aicmd.py, you need to set the environment variable OPENAI_API_KEY. I can help you do that.\nDo you want to permanently set the environment variable OPENAI_API_KEY? (y/n, default=y): ")
     if set_env_var.lower() != "y" and set_env_var != "":
         return
-    key = input("Please enter your OpenAI API key: ")
+    key = input("Please enter your OpenAI API key (go to https://beta.openai.com/account/api-keys): ")
     # handle differences between Windows and Unix systems
     set_all_users = input("Do you want to set the environment variable OPENAI_API_KEY for all users? (y/n, default=y): ")
     if os.name == 'nt':
@@ -122,7 +122,7 @@ def set_openai_api_key():
             os.system(f'setx OPENAI_API_KEY "{key}" /M')
         else:
             os.system(f'setx OPENAI_API_KEY "{key}"')
-            os.environ["OPENAI_API_KEY"] = key
+        os.system("cmd /c start cmd")
     else:
         # Untested
         print("Untested on unix")
@@ -135,7 +135,9 @@ def set_openai_api_key():
             # not running as root, set the environment variable for the current user
             with open(os.path.expanduser("~/.bashrc"), "a") as f:
                 f.write(f"\nexport OPENAI_API_KEY={key}")
-            os.environ["OPENAI_API_KEY"] = key
+        os.system("sh &")
+    print("Use new window with the environment variable OPENAI_API_KEY set")
+    exit(0)
 
 if __name__ == '__main__':
     key = os.getenv("OPENAI_API_KEY")
