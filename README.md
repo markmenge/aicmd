@@ -7,7 +7,7 @@ This Python script, `aicmd.py`, allows you to access ChatGPT from the command li
 - pip install openai
 - Go to openai.com and create an openai.com account
 - Generate an API key here: https://beta.openai.com/account/api-keys
-- The first time you run aicmd.py it will ask for the API key if environment variable OPENAI_API_KEY is not set.
+- The first time you run aicmd.py it will ask for the API key if environment variable OPENAI_API_KEY is not set. You might need to be administrator.
 
 # Usage
 python aicmd.py [macro] "english description of what you want to do"
