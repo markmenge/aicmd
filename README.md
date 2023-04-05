@@ -14,11 +14,12 @@ python aicmd.py [macro] "english description of what you want to do"
 
 # Examples
 - python aicmd.py none "who was picasso?"
-
+<pre>
 Pablo Picasso was a Spanish painter, sculptor, printmaker, and ceramicist who is widely regarded as one of the most influential artists of the 20th century. Born in 1881 in Malaga, Spain, he spent most of his adult life in France, where he became a central figure in the avant-garde movements of the early 1900s, including Cubism and Surrealism.
+</pre>
 
 - python aicmd.py cmd "List files sorted by size"
-
+<pre>
 F:\proj\aicmd>dir /os
  Volume in drive F is WDC3GB
  Volume Serial Number is FAED-0C9C
@@ -35,8 +36,15 @@ F:\proj\aicmd>dir /os
 03/20/2023  01:52 PM             1,192 check_imports.py
 03/20/2023  01:52 PM             1,436 README.md
 03/20/2023  01:52 PM             5,028 aicmd.py
+</pre>
 
 - python aicmd.py bash "How much memory does this computer have"
+<pre>
+$ free -h
+               total        used        free      shared  buff/cache   available
+Mem:           7.7Gi       326Mi       6.2Gi        22Mi       1.2Gi       7.1Gi
+Swap:          2.0Gi          0B       2.0Gi
+</pre>
 
 - python aicmd.py python "create a webserver that says hello world, with a button that when you push it says hello to you!"
 
