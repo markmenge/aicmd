@@ -1,6 +1,6 @@
 # AI Command Line Interface
 
-This Python script, `aicmd.py`, allows you to access ChatGPT from the command line!
+This Python script, `aicmd.py`, allows you to with a single command ask ChatGPT to do tasks from the command line, allowing natural language to quickly do amazing things!
 
 # Installation Instructions
 - Install python from eg https://www.python.org/
@@ -10,7 +10,7 @@ This Python script, `aicmd.py`, allows you to access ChatGPT from the command li
 - The first time you run aicmd.py it will ask for the API key if environment variable OPENAI_API_KEY is not set. You might need to be administrator.
 
 # Usage
-python aicmd.py [macro] "english description of what you want to do"
+python aicmd.py [context] "english description of what you want to do"
 
 # Examples
 - python aicmd.py none "who was picasso?"
